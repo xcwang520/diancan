@@ -23,9 +23,10 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   //NProgress.start();
   if (to.path == '/login') {
-    sessionStorage.removeItem('user');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
-  let user = JSON.parse(sessionStorage.getItem('user'));
+  let user = JSON.parse(localStorage.getItem('user'));
   if (!user && to.path != '/login' && to.path != '/regist') {
     next({ path: '/login' })
   } else {
@@ -37,8 +38,8 @@ router.beforeEach((to, from, next) => {
 axios.interceptors.request.use(
     config => {
         NProgress.start();
-        if(sessionStorage.getItem('token')) {
-            config.headers.token = sessionStorage.getItem('token');
+        if(localStorage.getItem('token')) {
+            config.headers.token = localStorage.getItem('token');
         }
         return config;
     },
@@ -58,7 +59,7 @@ axios.interceptors.response.use(
             switch (error.response.status) {
                 case 401:
                     // 返回 401 清除token信息并跳转到登录页面
-                    sessionStorage.removeItem('user');
+                    localStorage.removeItem('user');
                     router.replace({
                         path: 'login'
                     })

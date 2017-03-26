@@ -5,6 +5,7 @@ import Home from './components/Home.vue'
 import Dishes from './components/dishes/list.vue'
 import Orders from './components/orders/orders.vue'
 import History from './components/history/history.vue'
+import Settings from './components/settings/index.vue'
 
 let routes = [
     {
@@ -53,6 +54,16 @@ let routes = [
         leaf: true,//只有一个节点
         children: [
             { path: '/history', component: History, name: 'history' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '',
+        iconCls: 'fa fa-address-card',
+        leaf: true,//只有一个节点
+        children: [
+            { path: '/settings', component: Settings, name: 'settings' }
         ]
     },
     {

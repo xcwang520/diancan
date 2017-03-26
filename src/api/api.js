@@ -9,20 +9,24 @@ export const getDepartments = params => { return axios.get(`${base}/users/depart
 
 export const login = params => { return axios.post(`${base}/users/login`, qs.stringify(params)).then(res => res.data); };
 
-export const getDishes = params => { return axios.get(`${base}/dishes/queryList`, qs.stringify(params)).then(res => res.data); };
+export const updatePassword = params => { return axios.post(`${base}/users/updatePassword`, qs.stringify(params)).then(res => res.data); };
 
+export const getDishes = params => { return axios.post(`${base}/dishes/queryList`, qs.stringify(params)).then(res => res.data); };
 
+export const addDish = params => { return axios.post(`${base}/dishes/add`, qs.stringify(params)).then(res => res.data); };
 
+export const updateDish = params => { return axios.post(`${base}/dishes/updateStatus`, qs.stringify(params)).then(res => res.data); };
 
+export const addOrder = params => { return axios.post(`${base}/order/add`, qs.stringify(params)).then(res => res.data); };
 
-export const getUserList = params => { return axios.get(`${base}/user/list`, { params: params }); };
+export const deleteOrder = params => { return axios.post(`${base}/order/deleteByUser`, qs.stringify(params)).then(res => res.data); };
 
-export const getUserListPage = params => { return axios.get(`${base}/user/listpage`, { params: params }); };
+export const findOrder = params => { return axios.post(`${base}/order/find`, qs.stringify(params)).then(res => res.data); };
 
-export const removeUser = params => { return axios.get(`${base}/user/remove`, { params: params }); };
+export const findToday = params => { return axios.post(`${base}/order/findToday`, qs.stringify(params)).then(res => res.data); };
 
-export const batchRemoveUser = params => { return axios.get(`${base}/user/batchremove`, { params: params }); };
+export const findDishesCount = params => { return axios.post(`${base}/order/findDishesCount`, qs.stringify(params)).then(res => res.data); };
 
-export const editUser = params => { return axios.get(`${base}/user/edit`, { params: params }); };
+export const addTop = params => { return axios.post(`${base}/dishes/addTop`, qs.stringify(params)).then(res => res.data); };
 
-export const addUser = params => { return axios.get(`${base}/user/add`, { params: params }); };
+export const addStep = params => { return axios.post(`${base}/dishes/addStep`, qs.stringify(params)).then(res => res.data); };

@@ -1,6 +1,6 @@
 <template>
 	<el-row class="container">
-		<el-col :span="24" class="header">
+		<el-col :span="24" class="header" ref="homeHeader" v-if="showHeader">
 			<el-col :span="4" class="logo">
 				{{sysName}}
 			</el-col>
@@ -9,13 +9,14 @@
 				  <el-menu-item index="/orders" v-if="admin"><a href="#/orders">点餐列表</a></el-menu-item>
 				  <el-menu-item index="/dishes"><a href="#/dishes">菜单</a></el-menu-item>
 				  <el-menu-item index="/history"><a href="#/history">历史点餐</a></el-menu-item>
+					<el-menu-item index="/settings"><a href="#/settings">设置</a></el-menu-item>
 				</el-menu>
 			</el-col>
 			<el-col :span="2" class="userinfo">
-				<el-dropdown trigger="click">
+				<el-dropdown>
 					<span class="el-dropdown-link userinfo-inner">{{sysUserName}}</span>
 					<el-dropdown-menu slot="dropdown">
-						<el-dropdown-item>改密码</el-dropdown-item>
+						<el-dropdown-item><a href="#/login">退出</a></el-dropdown-item>
 					</el-dropdown-menu>
 				</el-dropdown>
 			</el-col>
@@ -38,24 +39,14 @@
 	export default {
 		data() {
 			return {
+				showHeader: true,
 				sysName:'dc',
-				sysUserName: '',
-				sysUserAvatar: '',
-				form: {
-					name: '',
-					region: '',
-					date1: '',
-					date2: '',
-					delivery: false,
-					type: [],
-					resource: '',
-					desc: ''
-				}
+				sysUserName: ''
 			}
 		},
 		computed: {
 			admin() {
-				let user = JSON.parse(sessionStorage.getItem('user'));
+				let user = JSON.parse(localStorage.getItem('user'));
 				return user.admin == 1;
 			}
 		},
@@ -63,7 +54,7 @@
 
 		},
 		mounted() {
-			var user = sessionStorage.getItem('user');
+			var user = localStorage.getItem('user');
 			if (user) {
 				user = JSON.parse(user);
 				this.sysUserName = user.name || '';

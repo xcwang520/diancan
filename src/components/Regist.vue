@@ -34,8 +34,8 @@
         loading: false,
         departments: [],
         form: {
-          name: '王学成',
-          email: 'xuecheng.wang@docqian.com',
+          name: '',
+          email: '',
           department: null
         },
         rules: {

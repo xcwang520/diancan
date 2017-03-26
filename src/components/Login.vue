@@ -25,8 +25,8 @@
       return {
         logining: false,
         form: {
-          email: 'xuecheng.wang@docqian.com',
-          password: '439868'
+          email: '',
+          password: ''
         },
         rules2: {
           email: [
@@ -59,9 +59,8 @@
                   type: 'error'
                 });
               } else {
-                console.log(JSON.stringify(data));
-                sessionStorage.setItem('user', JSON.stringify(data.user));
-                sessionStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('token', data.token);
                 let path = data.admin?"/orders":"/dishes";
                 this.$router.push({ path: path });
               }
@@ -72,6 +71,9 @@
           }
         });
       }
+    },
+    mounted() {
+
     }
   }
 
