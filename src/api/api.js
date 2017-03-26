@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-let base = '/bd';
+let base = '/';
 
 export const regist = params => { return axios.post(`${base}/users/regist`, qs.stringify(params)).then(res => res.data); };
 
