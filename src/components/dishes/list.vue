@@ -146,9 +146,9 @@ export default {
     orderButton() {
       let date1 = new Date();
        date1.setHours(17);
-       date1.setMinutes(0);
+       date1.setMinutes(15);
       let date2 = new Date();
-      return date2>date1?false:true;
+      return date2<date1?false:true;
     },
     admin() {
       let user = JSON.parse(localStorage.getItem('user'));
